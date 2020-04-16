@@ -1,0 +1,158 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/home/index",
+			"style": {
+				"navigationBarTitleText": "悦家9选"
+			}
+		}, {
+			"path": "pages/group/index",
+			"style": {
+				"navigationBarTitleText": "悦家团"
+			}
+		}, {
+			"path": "pages/preferred/index",
+			"style": {
+				"navigationBarTitleText": "悦家帮"
+			}
+		}, {
+			"path": "pages/user/index",
+			"style": {
+				"navigationBarTitleText": "我的悦家"
+			}
+		},
+		{
+			"path": "pages/order/index",
+			"style": {
+				"navigationBarTitleText": "我的订单"
+			}
+		}, {
+			"path": "pages/order/comment",
+			"style": {
+				"navigationBarTitleText": "评价"
+			}
+		}, {
+			"path": "pages/user/wallet",
+			"style": {
+				"navigationBarTitleText": "钱包"
+			}
+		}, {
+			"path": "pages/user/withdraw",
+			"style": {
+				"navigationBarTitleText": "申请提现"
+			}
+		}, {
+			"path": "pages/user/bindphone",
+			"style": {
+				"navigationBarTitleText": "绑定手机"
+			}
+		}, {
+			"path": "pages/user/address/index",
+			"style": {
+				"navigationBarTitleText": "收货地址"
+			}
+		}, {
+			"path": "pages/user/address/edit",
+			"style": {
+				"navigationBarTitleText": "编辑收货地址"
+			}
+		}, {
+			"path": "pages/user/searchgoods",
+			"style": {}
+		}, {
+			"path": "pages/home/details",
+			"style": {
+				"navigationBarTitleText": "悦家9选"
+			}
+		}, {
+			"path": "pages/user/present",
+			"style": {
+				"navigationBarTitleText": "好礼专享"
+			}
+		}, {
+			"path": "pages/user/discover",
+			"style": {
+				"navigationBarTitleText": "会员寻品"
+			}
+		}, {
+			"path": "pages/user/choiceness",
+			"style": {
+				"navigationBarTitleText": "会员权益"
+			}
+		}, {
+			"path": "pages/user/invite",
+			"style": {
+				"navigationBarTitleText": "邀请好友"
+			}
+		}, {
+			"path": "pages/user/senior",
+			"style": {
+				"navigationBarTitleText": "申请帮主"
+			}
+		}, {
+			"path": "pages/goods/cart",
+			"style": {
+				"navigationBarTitleText": "购物车"
+			}
+		}, {
+			"path": "pages/goods/details",
+			"style": {
+				"navigationBarTitleText": "商品详情"
+			}
+		}, {
+			"path": "pages/group/details",
+			"style": {}
+		}, {
+			"path": "pages/preferred/details",
+			"style": {}
+		}, {
+			"path": "pages/order/ready",
+			"style": {
+				"navigationBarTitleText": "确认订单"
+			}
+		}, {
+			"path": "pages/order/details",
+			"style": {
+				"navigationBarTitleText": "订单详情"
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "悦家帮",
+		"navigationBarBackgroundColor": "#FFFFFF",
+		"backgroundColor": "#F8F8F8"
+		// "navigationStyle": "custom"
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#e54d42",
+		"borderStyle": "black",
+		"backgroundColor": "#FFFFFF",
+		"list": [{
+				"pagePath": "pages/home/index",
+				"iconPath": "static/img/tabBar/home.png",
+				"selectedIconPath": "static/img/tabBar/home-on.png",
+				"text": "悦家9选"
+			},
+			{
+				"pagePath": "pages/group/index",
+				"iconPath": "static/img/tabBar/group.png",
+				"selectedIconPath": "static/img/tabBar/group-on.png",
+				"text": "悦家团"
+			},
+			{
+				"pagePath": "pages/preferred/index",
+				"iconPath": "static/img/tabBar/preferred.png",
+				"selectedIconPath": "static/img/tabBar/preferred-on.png",
+				"text": "悦家帮"
+			},
+			{
+				"pagePath": "pages/user/index",
+				"iconPath": "static/img/tabBar/user.png",
+				"selectedIconPath": "static/img/tabBar/user-on.png",
+				"text": "我的悦家"
+			}
+		]
+	}
+}

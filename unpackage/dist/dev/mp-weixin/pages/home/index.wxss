@@ -1,0 +1,24 @@
+
+.discount {
+	background-color: red;
+	color: #ffffff;
+}
+.top-img {
+	width: 11rem;
+	height: 1.5rem;
+	margin: 0 auto;
+}
+.color-666 {
+	color: #666666;
+}
+.home-goods-tag {
+	left: 0;
+	top: 0;
+	position: absolute;
+	border-radius: 5px 0 15px 0;
+	font-weight: 500;
+}
+.home-tag2 {
+	border-radius: 10px 0 10px 0;
+}
+

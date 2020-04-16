@@ -1,0 +1,69 @@
+{
+  "pages": [
+    "pages/home/index",
+    "pages/group/index",
+    "pages/preferred/index",
+    "pages/user/index",
+    "pages/order/index",
+    "pages/order/comment",
+    "pages/user/wallet",
+    "pages/user/withdraw",
+    "pages/user/bindphone",
+    "pages/user/address/index",
+    "pages/user/address/edit",
+    "pages/user/searchgoods",
+    "pages/home/details",
+    "pages/user/present",
+    "pages/user/discover",
+    "pages/user/choiceness",
+    "pages/user/invite",
+    "pages/user/senior",
+    "pages/goods/cart",
+    "pages/goods/details",
+    "pages/group/details",
+    "pages/preferred/details",
+    "pages/order/ready",
+    "pages/order/details"
+  ],
+  "subPackages": [],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "悦家帮",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "color": "#7A7E83",
+    "selectedColor": "#e54d42",
+    "borderStyle": "black",
+    "backgroundColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "iconPath": "static/img/tabBar/home.png",
+        "selectedIconPath": "static/img/tabBar/home-on.png",
+        "text": "悦家9选"
+      },
+      {
+        "pagePath": "pages/group/index",
+        "iconPath": "static/img/tabBar/group.png",
+        "selectedIconPath": "static/img/tabBar/group-on.png",
+        "text": "悦家团"
+      },
+      {
+        "pagePath": "pages/preferred/index",
+        "iconPath": "static/img/tabBar/preferred.png",
+        "selectedIconPath": "static/img/tabBar/preferred-on.png",
+        "text": "悦家帮"
+      },
+      {
+        "pagePath": "pages/user/index",
+        "iconPath": "static/img/tabBar/user.png",
+        "selectedIconPath": "static/img/tabBar/user-on.png",
+        "text": "我的悦家"
+      }
+    ]
+  },
+  "usingComponents": {},
+  "sitemapLocation": "sitemap47.json"
+}

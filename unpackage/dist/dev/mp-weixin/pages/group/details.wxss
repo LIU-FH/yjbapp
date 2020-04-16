@@ -1,0 +1,7 @@
+
+.share-but{
+	height: 60rpx;
+	border-top-left-radius: 30rpx;
+	border-bottom-left-radius: 30rpx;
+}
+
