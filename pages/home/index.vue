@@ -31,11 +31,13 @@ export default {
 	data() {
 		return {
 			globalData: {},
+			userInfo:{},
 			list: {}
 		};
 	},
 	onLoad() {
 		this.globalData = getApp().globalData;
+		this.userInfo = uni.getStorageSync('userInfo');
 		this.loadData();
 	},
 	methods: {
@@ -51,7 +53,7 @@ export default {
 		},
 		toGoodsDetails(id) {
 			uni.navigateTo({
-				url: '/pages/goods/details?id=' + id + '&keyword=' + this.globalData.userInfo.keyword
+				url: '/pages/goods/details?id=' + id + '&keyword=' + this.userInfo.keyword
 			});
 		},
 		toPay(id) {

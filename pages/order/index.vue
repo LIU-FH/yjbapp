@@ -88,7 +88,7 @@ export default {
 		loadData() {
 			let params = {};
 			if (this.TabCur > -1) {
-				params.category_id = this.TabCur;
+				params.status = this.TabCur;
 			}
 			this.$minApi
 				.order(params)

@@ -1,9 +1,0 @@
-
-.share-but {
-	height: 60rpx;
-	border-top-left-radius: 30rpx;
-	border-bottom-left-radius: 30rpx;
-	border-top-right-radius: 0;
-	border-bottom-right-radius: 0;
-}
-

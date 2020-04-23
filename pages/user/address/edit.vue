@@ -39,7 +39,7 @@
 				details:{
 					name:'',
 					tel:'',
-					city:['北京市','北京市','北京市'],
+					city:['北京市','北京市','东城区'],
 					details:'',
 					default:0,
 				},

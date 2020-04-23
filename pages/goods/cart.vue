@@ -113,7 +113,7 @@ export default {
 				.cart()
 				.then(res => {
 					for (let i = 0; i < res.data.length; i++) {
-						if (i % 2 === 0) {
+						if (res.data[i].goods.sell_status.status === 0) {
 							this.list.push(res.data[i]);
 						} else {
 							this.failureList.push(res.data[i]);

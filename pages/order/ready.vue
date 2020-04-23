@@ -1,5 +1,5 @@
 <template>
-	<view>
+	<view style="margin-bottom: 130upx;">
 		<view @tap="toAddress" class="cu-card">
 			<view v-if="details.address_name && details.address_tel && details.address_details" class="cu-item padding">
 				<view>
@@ -120,6 +120,9 @@ export default {
 					address_details: this.details.address_details
 				})
 				.then(res => {
+					if(res.error){
+						return false
+					}
 					uni.requestPayment({
 						provider: 'wxpay',
 						timeStamp: String(Date.now()),

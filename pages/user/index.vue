@@ -11,9 +11,9 @@
 				</view>
 				<view v-else class="margin-bottom-xl flex align-center margin-top-xl">
 					<view class="cu-avatar xl round margin-lr cuIcon-people"></view>
-					<button class="cu-btn margin-tb-sm round" open-type="getUserInfo" withCredentials="true" lang="zh_CN" @getuserinfo="wxGetUserInfo">
+					<navigator hover-class="none" url="/pages/login" class="cu-btn margin-tb-sm round text-black">
 						授权登录
-					</button>
+					</navigator>
 				</view>
 				<view class="flex justify-between padding-lr-xl margin-tb text-sm">
 					<navigator class="flex align-center" hover-class="none" url="/pages/user/address/index">
@@ -45,12 +45,12 @@
 				<view class="cu-bar bg-white solid-bottom">
 					<view class="action">我的订单</view>
 					<view class="action text-gray">
-						<navigator hover-class="none" url="/pages/order/index">查看更多</navigator>
+						<navigator hover-class="none" url="/pages/order/index?status=-1">查看更多</navigator>
 					</view>
 				</view>
 				<view class="cu-list grid col-4 no-border">
 					<view class="cu-item  ">
-						<navigator hover-class="none" url="/pages/order/index?status=0" open-type="redirect">
+						<navigator hover-class="none" url="/pages/order/index?status=0">
 							<view class="cuIcon-pay">
 								<view class="cu-tag badge" v-if="order_count.status_0 > 0">
 									<block>{{ order_count.status_0 > 99 ? '99+' : order_count.status_0 }}</block>
@@ -60,7 +60,7 @@
 						</navigator>
 					</view>
 					<view class="cu-item">
-						<navigator hover-class="none" url="/pages/order/index?status=1" open-type="redirect">
+						<navigator hover-class="none" url="/pages/order/index?status=1">
 							<view class="cuIcon-send">
 								<view class="cu-tag badge" v-if="order_count.status_1 > 0">
 									<block>{{ order_count.status_1 > 99 ? '99+' : order_count.status_1 }}</block>
@@ -150,66 +150,22 @@
 	export default {
 		data() {
 			return {
-				globalData: {},
+				globalData:{},
+				userInfo: {},
 				order_count: 0,
 				cart_count: 0,
-				userInfo: {}
 			};
 		},
 		onLoad: function(option) {
 			this.globalData = getApp().globalData;
-			this.userInfo = this.globalData.userInfo
+			this.userInfo = uni.getStorageSync('userInfo');
 			this.loadData();
 			if (option.order) {
 				this.isOrder = true;
 			}
 		},
 		methods: {
-			wxGetUserInfo() {
-				let that = this;
-
-				let UserInfo = uni.getStorageSync('getUserInfo');
-				if (UserInfo) {
-					that.$minApi
-						.login(UserInfo)
-						.then(res => {
-							that.userInfo = res.data
-							getApp().globalData.userInfo = res.data
-							uni.setStorageSync('access_token', res.token);
-						})
-						.catch(err => {
-							console.log(err);
-						});
-					return true;
-				}
-
-				uni.getUserInfo({
-					provider: 'weixin',
-					success: function(infoRes) {
-						uni.setStorageSync('getUserInfo', infoRes);
-						that.$minApi
-							.login(infoRes)
-							.then(res => {
-								that.userInfo = res.data
-								getApp().globalData.userInfo = res.data
-								uni.setStorageSync('access_token', res.token);
-							})
-							.catch(err => {
-								console.log(err);
-							});
-					},
-					fail(res) {}
-				});
-			},
 			loadData() {
-				this.$minApi
-					.userInfo({})
-					.then(res => {
-						this.userInfo = res;
-					})
-					.catch(err => {
-						console.log(err);
-					});
 				this.$minApi
 					.orderCount({})
 					.then(res => {

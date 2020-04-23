@@ -61,8 +61,8 @@
 			<view class="text-gray padding-lr-sm">商品详情</view>
 			<view class="bg-gray basis-xs" style="height: 3upx;"></view>
 		</view>
-		<view style="min-height: 500upx;">
-			<image mode="widthFix" class="response" v-for="(item, index) in details.details" :key="index" :src="globalData.file_url + item"></image>
+		<view class="goods_details" v-html="details.details">
+			<!-- <image mode="widthFix" class="response" v-for="(item, index) in details.details" :key="index" :src="globalData.file_url + item"></image> -->
 		</view>
 		<view class="cu-bar bg-white tabbar border shop foot">
 			<button open-type="contact" class="action">
@@ -86,28 +86,23 @@ export default {
 	data() {
 		return {
 			globalData: {},
-			details: {}
+			details: {},
 		};
 	},
 	onLoad: function(option) {
 		this.globalData = getApp().globalData;
 		this.loadData(option.id);
-		if(option.keyword && option.keyword != this.globalData.userInfo.keyword){
+		if (option.keyword && option.keyword != this.globalData.userInfo.keyword) {
 			this.userBind(option.keyword);
 		}
 	},
 	methods: {
 		loadData(id) {
-			this.$minApi
-				.goodsDetails({ id: id })
-				.then(res => {
-					this.details = res.data;
-				})
-				.catch(err => {
-					console.log(err);
-				});
+			this.$minApi.goodsDetails({ id: id }).then(res => {
+				this.details = res.data;
+			});
 		},
-		userBind(keyword){
+		userBind(keyword) {
 			this.$minApi.userBind({ keyword: keyword });
 		},
 		toPay(id) {
@@ -133,8 +128,8 @@ export default {
 							}
 						}
 					});
-					this.globalData.cart_count = this.globalData.cart_count + 1
-					getApp().globalData.cart_count = this.globalData.cart_count
+					this.globalData.cart_count = this.globalData.cart_count + 1;
+					getApp().globalData.cart_count = this.globalData.cart_count;
 				})
 				.catch(err => {
 					console.log(err);
@@ -151,5 +146,11 @@ export default {
 	border-bottom-left-radius: 30upx;
 	border-top-right-radius: 0;
 	border-bottom-right-radius: 0;
+}
+.goods_details{
+	min-height: 500upx;
+}
+..goods_details img{
+	max-width: 100%;
 }
 </style>

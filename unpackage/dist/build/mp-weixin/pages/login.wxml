@@ -1,1 +1,0 @@
-<view class="text-center"><open-data style="width:200rpx;height:200rpx;" type="userAvatarUrl"></open-data><open-data class="user-name" type="userNickName" lang="zh_CN"></open-data><button open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button></view>

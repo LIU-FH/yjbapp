@@ -12,7 +12,7 @@
 		</view>
 		<view class="cu-card">
 			<view class="cu-item cu-list">
-				<view class="cu-item flex align-center padding" v-for="(item, index) in details.details" :key="index">
+				<view @tap="toGoodsDetails(item.id)" class="cu-item flex align-center padding" v-for="(item, index) in details.details" :key="index">
 					<view class="cu-avatar xl margin-right-sm flex-none" :style="'background-image:url(' + globalData.file_url + item.img + ');'"></view>
 					<view class="width-full">
 						<view style="height: 90upx;" class="text-cut">{{ item.title }}</view>

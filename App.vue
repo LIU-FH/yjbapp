@@ -2,10 +2,8 @@
 	import Vue from 'vue'
 	export default {
 		globalData: {
-			// api_url: 'https://yjb.liufh.com',
-			api_url: 'http://local.yjb.com',
-			// file_url: 'https://yjb.liufh.com/storage/',
-			file_url: 'http://local.yjb.com/storage/',
+			api_url: 'http://www.laravel.local',
+			file_url: 'http://www.laravel.local/storage/',
 			userInfo: {},
 			cart_count: 0
 		},
@@ -34,24 +32,24 @@
 			});
 
 
-			uni.login({
-				provider: 'weixin',
-				success: function(loginRes) {
-					let code = loginRes.code;
-					uni.getUserInfo({
-						provider: 'weixin',
-						success: function(infoRes) {
-							infoRes.code = code
-							this.$minApi
-								.login(infoRes)
-								.then(res => {
-									getApp().globalData.userInfo = res.data
-									uni.setStorageSync('access_token', res.token);
-								});
-						}
-					});
-				},
-			});
+			// uni.login({
+			// 	provider: 'weixin',
+			// 	success: function(loginRes) {
+			// 		let code = loginRes.code;
+			// 		uni.getUserInfo({
+			// 			provider: 'weixin',
+			// 			success: function(infoRes) {
+			// 				infoRes.code = code
+			// 				this.$minApi
+			// 					.login(infoRes)
+			// 					.then(res => {
+			// 						getApp().globalData.userInfo = res.data
+			// 						uni.setStorageSync('access_token', res.token);
+			// 					});
+			// 			}
+			// 		});
+			// 	},
+			// });
 		},
 		onShow: function() {
 			console.log('App Show')

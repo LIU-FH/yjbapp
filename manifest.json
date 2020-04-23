@@ -1,5 +1,5 @@
 {
-    "name" : "yjbapp",
+    "name" : "uniapp",
     "appid" : "",
     "description" : "",
     "versionName" : "1.0.0",
@@ -57,11 +57,9 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "wxcd479c6ad106fb33",
+        "appid" : "",
         "setting" : {
-            "urlCheck" : false,
-            "minified" : true,
-            "postcss" : true
+            "urlCheck" : false
         },
         "usingComponents" : true
     },

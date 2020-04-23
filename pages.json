@@ -115,6 +115,11 @@
 			"style": {
 				"navigationBarTitleText": "订单详情"
 			}
+		},{
+			"path": "pages/login",
+			"style": {
+				"navigationBarTitleText": "登录"
+			}
 		}
 	],
 	"globalStyle": {

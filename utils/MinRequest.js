@@ -4,114 +4,119 @@ const requestBefore = Symbol('requestBefore')
 const requestAfter = Symbol('requestAfter')
 
 class MinRequest {
-  [config] = {
-    baseURL: '',
-    header: {
-      'content-type': 'application/json',
-	  'from':'wx'
-    },
-    method: 'GET',
-    dataType: 'json',
-    responseType: 'text'
-  }
+	[config] = {
+		baseURL: '',
+		header: {
+			'content-type': 'application/json',
+			'from': 'wx',
+			'Authorization': 'Bearer ' + uni.getStorageSync('access_token'),
+		},
+		method: 'GET',
+		dataType: 'json',
+		responseType: 'text'
+	}
 
-  interceptors = {
-    request: (func) => {
-      if (func) {
-        MinRequest[requestBefore] = func
-      } else {
-        MinRequest[requestBefore] = (request) => request
-      }
-      
-    },
-    response: (func) => {
-      if (func) {
-        MinRequest[requestAfter] = func
-      } else {
-        MinRequest[requestAfter] = (response) => response
-      }
-    }
-  }
+	interceptors = {
+		request: (func) => {
+			if (func) {
+				MinRequest[requestBefore] = func
+			} else {
+				MinRequest[requestBefore] = (request) => request
+			}
 
-  static [requestBefore] (config) {
-    return config
-  }
+		},
+		response: (func) => {
+			if (func) {
+				MinRequest[requestAfter] = func
+			} else {
+				MinRequest[requestAfter] = (response) => response
+			}
+		}
+	}
 
-  static [requestAfter] (response) {
-    return response
-  }
+	static[requestBefore](config) {
+		return config
+	}
 
-  static [isCompleteURL] (url) {
-    return /(http|https):\/\/([\w.]+\/?)\S*/.test(url)
-  }
+	static[requestAfter](response) {
+		return response
+	}
 
-  setConfig (func) {
-    this[config] = func(this[config])
-  }
+	static[isCompleteURL](url) {
+		return /(http|https):\/\/([\w.]+\/?)\S*/.test(url)
+	}
 
-  request (options = {}) {
-    options.baseURL = options.baseURL || this[config].baseURL
-    options.dataType = options.dataType || this[config].dataType
-    options.url = MinRequest[isCompleteURL](options.url) ? options.url : (options.baseURL + options.url)
-    options.data = options.data
-    options.header = {...options.header, ...this[config].header}
-    options.method = options.method || this[config].method
+	setConfig(func) {
+		this[config] = func(this[config])
+	}
 
-    options = {...options, ...MinRequest[requestBefore](options)}
+	request(options = {}) {
+		options.baseURL = options.baseURL || this[config].baseURL
+		options.dataType = options.dataType || this[config].dataType
+		options.url = MinRequest[isCompleteURL](options.url) ? options.url : (options.baseURL + options.url)
+		options.data = options.data
+		options.header = { ...options.header,
+			...this[config].header
+		}
+		options.method = options.method || this[config].method
 
-    return new Promise((resolve, reject) => {
-      options.success = function (res) {
-        resolve(MinRequest[requestAfter](res))
-      }
-      options.fail= function (err) {
-        reject(MinRequest[requestAfter](err))
-      }
-      uni.request(options)
-    })
-  }
+		options = { ...options,
+			...MinRequest[requestBefore](options)
+		}
 
-  get (url, data, options = {}) {
-    options.url = url
-    options.data = data
-    options.method = 'GET'
-    return this.request(options)
-  }
+		return new Promise((resolve, reject) => {
+			options.success = function(res) {
+				resolve(MinRequest[requestAfter](res))
+			}
+			options.fail = function(err) {
+				reject(MinRequest[requestAfter](err))
+			}
+			uni.request(options)
+		})
+	}
 
-  post (url, data, options = {}) {
-    options.url = url
-    options.data = data
-    options.method = 'POST'
-    return this.request(options)
-  }
-  
-  patch (url, data, options = {}) {
-    options.url = url
-    options.data = data
-    options.method = 'PATCH'
-    return this.request(options)
-  }
-  
-  delete (url, data, options = {}) {
-    options.url = url
-    options.data = data
-    options.method = 'DELETE'
-    return this.request(options)
-  }
+	get(url, data, options = {}) {
+		options.url = url
+		options.data = data
+		options.method = 'GET'
+		return this.request(options)
+	}
+
+	post(url, data, options = {}) {
+		options.url = url
+		options.data = data
+		options.method = 'POST'
+		return this.request(options)
+	}
+
+	patch(url, data, options = {}) {
+		options.url = url
+		options.data = data
+		options.method = 'PATCH'
+		return this.request(options)
+	}
+
+	delete(url, data, options = {}) {
+		options.url = url
+		options.data = data
+		options.method = 'DELETE'
+		return this.request(options)
+	}
 }
 
-MinRequest.install = function (Vue) {
-  Vue.mixin({
-    beforeCreate: function () {
+MinRequest.install = function(Vue) {
+	Vue.mixin({
+		beforeCreate: function() {
 			if (this.$options.minRequest) {
 				Vue._minRequest = this.$options.minRequest
 			}
-    }
-  })
-  Object.defineProperty(Vue.prototype, '$minApi', {
-    get: function () {
+		}
+	})
+	Object.defineProperty(Vue.prototype, '$minApi', {
+		get: function() {
 			return Vue._minRequest.apis
 		}
-  })
+	})
 }
 
 export default MinRequest
